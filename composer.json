@@ -1,0 +1,36 @@
+{
+    "name": "jeremykenedy/laravel-monitor",
+    "description": "Laravel 2 Step Authentication Package",
+    "keywords": ["laravel", "monitor"],
+    "license": "MIT",
+    "type": "package",
+    "authors": [
+        {
+            "name": "jeremykenedy",
+            "email": "jeremykenedy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "jeremykenedy\\laravel2step\\": "src/"
+        },
+        "files": [
+            "src/app/Logic/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "jeremykenedy\\laravel2step\\laravel2stepServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
