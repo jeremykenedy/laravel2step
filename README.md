@@ -20,6 +20,8 @@ Laravel 2-Step Authentication Verification for Laravel. Can be used in out the b
 * Readme
 * Screenshots
 * Language file cleanup.
+* Cleanup Service provider file.
+* Cleanup doc blocks.
 * Have more configurable options via the config file to run to env file. For:
     * Optional compiled CSS/JS
     * Optional use of modals/alerts in front end with optional sweetalert2.js
