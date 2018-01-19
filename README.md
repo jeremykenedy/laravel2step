@@ -9,7 +9,7 @@
 - [License](#license)
 
 ### About
-Laravel 2 step verifcation is a package to add 2 step user authentication to any laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4 digit verfication code.
+Laravel 2 step verification is a package to add 2 step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code.
 
 ### Future
 * Have more configurable options via the config file to run to env file. For:
@@ -18,9 +18,11 @@ Laravel 2 step verifcation is a package to add 2 step user authentication to any
     * Configurable blade extensions options.
     * Its own HTML email template.
 * Make Facade
-* Add in additional notications for SMS or ???.
-* Add in capture Ip Address.
-* Change to incrimential tables and logic accordingly
+* Unit Tests
+* Travis-CI Integration.
+* Add in additional notifications for SMS or ???.
+* Add in capture IP Address.
+* Change to incremental tables and logic accordingly
     * Create Artisan command and job to prune said entries.
 
 ### License
