@@ -9,7 +9,9 @@
 - [License](#license)
 
 ### About
-Laravel 2 step verification is a package to add 2 step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code.
+Laravel 2-Step verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code.
+
+Laravel 2-Step Authentication Verification for Laravel. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects. 
 
 ### Future
 * Have more configurable options via the config file to run to env file. For:
