@@ -28,6 +28,7 @@ class CreateTwoStepAuthTable extends Migration
                 $table->integer('authCount');
                 $table->boolean('authStatus')->default(false);
                 $table->dateTime('authDate')->nullable();
+                $table->dateTime('requestDate')->nullable();
                 $table->timestamps();
             });
         }

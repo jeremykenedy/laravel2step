@@ -24,12 +24,24 @@ class Laravel2step
         $uri        = $request->path();
         $nextUri    = config('app.url') . '/' .  $uri;
 
-        session(['nextUri' => $nextUri]);
+        switch ($uri) {
+            case 'verification/needed':
+            case 'password/reset':
+            case 'register':
+            case 'logout':
+            case 'login':
+            case '/':
+                break;
 
-        if (config('laravel2step.laravel2stepEnabled')) {
-            if ($this->twoStepVerification($request) !== true) {
-                return redirect('verification/needed');
-            }
+            default:
+                session(['nextUri' => $nextUri]);
+
+                if (config('laravel2step.laravel2stepEnabled')) {
+                    if ($this->twoStepVerification($request) !== true) {
+                        return redirect('verification/needed');
+                    }
+                }
+                break;
         }
 
         return $response;

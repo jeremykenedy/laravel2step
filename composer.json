@@ -16,10 +16,7 @@
     "autoload": {
         "psr-4": {
             "jeremykenedy\\laravel2step\\": "src/"
-        },
-        "files": [
-            "src/app/Logic/helpers.php"
-        ]
+        }
     },
     "extra": {
         "laravel": {

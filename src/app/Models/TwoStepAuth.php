@@ -44,6 +44,7 @@ class TwoStepAuth extends Model
     protected $dates = [
         'created_at',
         'updated_at',
+        'requestDate',
         'authDate',
     ];
 
@@ -57,6 +58,8 @@ class TwoStepAuth extends Model
         'authCode',
         'authCount',
         'authStatus',
+        'requestDate',
+        'authDate',
     ];
 
     protected $casts = [

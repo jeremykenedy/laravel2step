@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
+use jeremykenedy\laravel2step\App\Notifications\SendVerificationCodeEmail;
 
 trait Laravel2StepTrait
 {
@@ -41,8 +42,10 @@ trait Laravel2StepTrait
 
     /**
      * Check time since user was last verified and take apprpriate action
+     *
      * @param collection $twoStepAuth
-     * @return [type]                    [description]
+     *
+     * @return boolean
      */
     private function checkTimeSinceVerified($twoStepAuth)
     {
@@ -67,10 +70,12 @@ trait Laravel2StepTrait
      */
     private function resetAuthStatus($twoStepAuth)
     {
-        $twoStepAuth->authCode   = $this->generateCode();
-        $twoStepAuth->authCount  = 0;
-        $twoStepAuth->authStatus = 0;
-        $twoStepAuth->authDate   = NULL;
+        $twoStepAuth->authCode    = $this->generateCode();
+        $twoStepAuth->authCount   = 0;
+        $twoStepAuth->authStatus  = 0;
+        $twoStepAuth->authDate    = NULL;
+        $twoStepAuth->requestDate = NULL;
+
         $twoStepAuth->save();
 
         return $twoStepAuth;
@@ -90,6 +95,7 @@ trait Laravel2StepTrait
         for($i = 0; $i < $length; $i++){
             $prefix .= random_int(0,1) ? chr(random_int(65, 90)) : random_int(0, 9);
         }
+
         return $prefix . $suffix;
     }
 
@@ -112,6 +118,7 @@ trait Laravel2StepTrait
                 'authCount' => 0,
             ]
         );
+
         return $twoStepAuth;
     }
 
@@ -136,12 +143,14 @@ trait Laravel2StepTrait
      */
     protected function exceededTimeParser($time)
     {
-        $tomorrow = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->format('l, F jS Y h:i:sa');
-        $remaining = $time->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->diffForHumans(null, true);
+        $tomorrow   = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->format('l, F jS Y h:i:sa');
+        $remaining  = $time->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->diffForHumans(null, true);
+
         $data = [
             'tomorrow'  => $tomorrow,
             'remaining' => $remaining,
         ];
+
         return collect($data);
     }
 
@@ -191,12 +200,32 @@ trait Laravel2StepTrait
      */
     protected function resetActivationCountdown($twoStepAuth)
     {
-        $twoStepAuth->authCode   = $this->generateCode();
-        $twoStepAuth->authCount  = 0;
-        $twoStepAuth->authStatus = 1;
-        $twoStepAuth->authDate   = Carbon::now();
+        $twoStepAuth->authCode    = $this->generateCode();
+        $twoStepAuth->authCount   = 0;
+        $twoStepAuth->authStatus  = 1;
+        $twoStepAuth->authDate    = Carbon::now();
+        $twoStepAuth->requestDate = null;
 
         $twoStepAuth->save();
     }
 
+    /**
+     * Send verification code via notify.
+     *
+     * @param array $user
+     * @param string $deliveryMethod (nullable)
+     * @param string $code
+     *
+     * @return void
+     */
+    protected function sendVerificationCodeNotification($twoStepAuth, $deliveryMethod = null)
+    {
+        $user = Auth::User();
+        if ($deliveryMethod === null) {
+            $user->notify(new SendVerificationCodeEmail($user, $twoStepAuth->authCode));
+        }
+        $twoStepAuth->requestDate = Carbon::now();
+
+        $twoStepAuth->save();
+    }
 }

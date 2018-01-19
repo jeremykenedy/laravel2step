@@ -117,7 +117,7 @@ switch ($remainingAttempts) {
                                     </p>
                                 </div>
                                 <div class="col-xs-12 text-center">
-                                    <a class="btn btn-link" href="{{ route('password.request') }}" tabindex="6">
+                                    <a class="btn btn-link" id="resend_code_trigger" href="#" tabindex="6">
                                         {{ trans('laravel2step::laravel-verification.missingCode') }}
                                     </a>
                                 </div>
@@ -172,8 +172,21 @@ switch ($remainingAttempts) {
 
                         switch(remainingAttempts) {
                             case 0:
+                                submitTrigger.addClass('btn-danger');
+                                swal(
+                                  'Doh!',
+                                  'Account Locked!',
+                                  'error'
+                                );
+                                break;
+
                             case 1:
                                 submitTrigger.addClass('btn-danger');
+                                swal(
+                                  'Warning!',
+                                  'This is your last attempt before your account locks for 24 hours.',
+                                  'error'
+                                );
                                 break;
 
                             case 2:
@@ -214,5 +227,66 @@ switch ($remainingAttempts) {
         });
 
     </script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.0/sweetalert2.all.js"></script>
+
+
+<script type="text/javascript">
+
+    $("#resend_code_trigger").click(function(event) {
+        event.preventDefault();
+
+        var self = $(this);
+        var resultStatus;
+        var resultData;
+        var endpoint = "/verification/resend";
+
+        self.addClass('disabled')
+        .attr("disabled", true);
+
+        swal({
+          text: 'Sending verification code ...',
+          timer: 1500,
+          allowOutsideClick: false,
+          grow: false,
+          animation: false,
+          onOpen: () => {
+            swal.showLoading();
+            $.ajax(
+                {
+                    type: "post",
+                    url: endpoint,
+                    success: function(response, status, data){
+                        resultData = response;
+                        resultStatus = status;
+                    },
+                    error: function (response, status, error) {
+                        resultData = error;
+                        resultStatus = status;
+                    }
+                }
+            )
+          }
+        }).then((result) => {
+            swal({
+                text: resultData.title,
+                text: resultData.message,
+                type: resultStatus,
+                grow: false,
+                animation: false,
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-lg btn-' + resultStatus,
+                confirmButtonText: 'Ok',
+                timer: 5000,
+            });
+
+            self.removeClass('disabled')
+            .attr("disabled", false);
+
+        })
+    });
+
+</script>
 
 @endsection
