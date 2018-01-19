@@ -4,6 +4,9 @@
 [![Total Downloads](https://poser.pugx.org/jeremykenedy/laravel2step/downloads)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![License](https://poser.pugx.org/jeremykenedy/laravel2step/license)](https://packagist.org/packages/jeremykenedy/laravel2step)
 
+###### Note: Package is still in progress but is almost there.
+
+Table of contents:
 - [About](#about)
 - [Future](#future)
 - [License](#license)
