@@ -1,7 +1,7 @@
 {
-    "name": "jeremykenedy/laravel-monitor",
+    "name": "jeremykenedy/laravel2step",
     "description": "Laravel 2 Step Authentication Package",
-    "keywords": ["laravel", "monitor"],
+    "keywords": ["laravel", "2-step verification", "verification"],
     "license": "MIT",
     "type": "package",
     "authors": [

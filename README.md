@@ -17,6 +17,7 @@ Laravel 2 step verifcation is a package to add 2 step user authentication to any
     * Optional use of modals/alerts in front end with optional sweetalert2.js
     * Configurable blade extensions options.
     * Its own HTML email template.
+* Make Facade
 * Add in additional notications for SMS or ???.
 * Add in capture Ip Address.
 * Change to incrimential tables and logic accordingly
