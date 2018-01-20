@@ -110,8 +110,8 @@ twostep
 Example to start recording page views using middlware in `web.php`:
 
 ```php
-Route::group(['middleware' => ['auth', 'twostep']], function () {
-    Route::get('/', 'WelcomeController@welcome')->name('welcome');
+Route::group(['middleware' => ['twostep']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 ```
 
@@ -121,14 +121,67 @@ Route::group(['middleware' => ['auth', 'twostep']], function () {
 * ```/verification/resend```
 
 ### Screenshots
-![Verification Page](...)
-![Locked Page](...)
-![Verification Email](...)
+![Verification Page](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/1-verification-page.jpeg)
+![Resent Email Modal](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/2-verification-email-resent.jpeg)
+![Lock Warning Modal](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/3-lock-warning.jpeg)
+![Locked Page](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/4-lock-screen.jpeg)
+![Verification Email](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/5-verification-email.jpeg)
 
 ### File Tree
 
 ```
- ...
+└── laravel2step
+    ├── .gitignore
+    ├── LICENSE
+    ├── README.md
+    ├── composer.json
+    └── src
+        ├── .env.example
+        ├── Laravel2stepServiceProvider.php
+        ├── app
+        │   ├── Http
+        │   │   ├── Controllers
+        │   │   │   └── TwoStepController.php
+        │   │   └── Middleware
+        │   │       └── Laravel2step.php
+        │   ├── Models
+        │   │   └── TwoStepAuth.php
+        │   ├── Notifications
+        │   │   └── SendVerificationCodeEmail.php
+        │   └── Traits
+        │       └── Laravel2StepTrait.php
+        ├── config
+        │   └── laravel2step.php
+        ├── database
+        │   └── migrations
+        │       └── 2017_12_09_070937_create_two_step_auth_table.php
+        ├── public
+        │   └── css
+        │       ├── app.css
+        │       └── app.min.css
+        ├── resources
+        │   ├── assets
+        │   │   └── scss
+        │   │       ├── _animations.scss
+        │   │       ├── _mixins.scss
+        │   │       ├── _modals.scss
+        │   │       ├── _variables.scss
+        │   │       ├── _verification.scss
+        │   │       └── app.scss
+        │   ├── lang
+        │   │   └── en
+        │   │       └── laravel-verification.php
+        │   └── views
+        │       ├── layouts
+        │       │   └── app.blade.php
+        │       ├── partials
+        │       ├── scripts
+        │       │   └── input-parsing-auto-stepper.blade.php
+        │       └── twostep
+        │           ├── exceeded.blade.php
+        │           └── verification.blade.php
+        └── routes
+            └── web.php
 
 ```
 
@@ -136,11 +189,6 @@ Route::group(['middleware' => ['auth', 'twostep']], function () {
 * File tree generated using command `tree -a -I '.git|node_modules|vendor|storage|tests`
 
 ### Future
-* Readme
-* Screenshots
-* Language file cleanup.
-* Cleanup Service provider file.
-* Cleanup doc blocks.
 * Have more configurable options via the config file to run to env file. For:
     * Optional compiled CSS/JS
     * Optional use of modals/alerts in front end with optional sweetalert2.js

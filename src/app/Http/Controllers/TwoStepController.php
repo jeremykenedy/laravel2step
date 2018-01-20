@@ -184,16 +184,17 @@ class TwoStepController extends Controller
      * Resend the validation code triggered by user
      *
      * @return \Illuminate\Http\Response
-     *
      */
     public function resend()
     {
         $twoStepAuth = $this->_twoStepAuth;
         $this->sendVerificationCodeNotification($twoStepAuth);
 
+
+
         $returnData = [
-            'title' => 'Success!',
-            'message' => 'Verification Email Sent!',
+            'title' => trans('laravel2step::laravel-verification.verificationEmailSuccess'),
+            'message' => trans('laravel2step::laravel-verification.verificationEmailSentMsg'),
         ];
 
         return response()->json($returnData, 200);

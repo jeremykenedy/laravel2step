@@ -65,7 +65,9 @@ trait Laravel2StepTrait
 
     /**
      * Reset TwoStepAuth collection item and code
+     *
      * @param collection $twoStepAuth
+     *
      * @return collection
      */
     private function resetAuthStatus($twoStepAuth)
@@ -155,8 +157,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Check if time since account lock has expired and return true
-     * if account verification can be reset
+     * Check if time since account lock has expired and return true if account verification can be reset
      *
      * @param datetime $time
      *

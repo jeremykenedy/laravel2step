@@ -137,6 +137,11 @@ switch ($remainingAttempts) {
 
 @section('foot')
 
+    @php
+        $minutesToExpire = config('laravel2step.laravel2stepExceededCountdownMinutes');
+        $hoursToExpire = $minutesToExpire / 60;
+    @endphp
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     @include('laravel2step::scripts.input-parsing-auto-stepper');
@@ -175,8 +180,8 @@ switch ($remainingAttempts) {
                             case 0:
                                 submitTrigger.addClass('btn-danger');
                                 swal(
-                                  'Doh!',
-                                  'Account Locked!',
+                                  "{{ trans('laravel2step::laravel-verification.verificationLockedTitle') }}",
+                                  "{{ trans('laravel2step::laravel-verification.verificationLockedMessage') }}",
                                   'error'
                                 );
                                 break;
@@ -184,8 +189,8 @@ switch ($remainingAttempts) {
                             case 1:
                                 submitTrigger.addClass('btn-danger');
                                 swal(
-                                  'Warning!',
-                                  'This is your last attempt before your account locks for 24 hours.',
+                                  "{{ trans('laravel2step::laravel-verification.verificationWarningTitle') }}",
+                                  "{{ trans('laravel2step::laravel-verification.verificationWarningMessage', ['hours' => $hoursToExpire, 'minutes' => $minutesToExpire,]) }}",
                                   'error'
                                 );
                                 break;

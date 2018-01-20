@@ -16,6 +16,7 @@ class Laravel2step
      *
      * @param Request $request
      * @param \Closure $response
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
