@@ -14,11 +14,11 @@ class TwoStepController extends Controller
 {
     use Laravel2StepTrait;
 
-    private $_user;
-    private $_twoStepAuth;
     private $_authCount;
     private $_authStatus;
+    private $_twoStepAuth;
     private $_remainingAttempts;
+    private $_user;
 
     /**
      * Create a new controller instance.
@@ -40,6 +40,7 @@ class TwoStepController extends Controller
     /**
      * Set the User2Step Variables
      *
+     * @return void
      */
     private function setUser2StepData()
     {
@@ -81,12 +82,12 @@ class TwoStepController extends Controller
     /**
      * Show the twostep verification form.
      *
-     90
+     * @return \Illuminate\Http\Response
      */
     public function showVerification()
     {
-        $twoStepAuth        = $this->_twoStepAuth;
-        $authStatus         = $this->_authStatus;
+        $twoStepAuth = $this->_twoStepAuth;
+        $authStatus  = $this->_authStatus;
 
         if ($this->checkExceededTime($twoStepAuth->updated_at)) {
             $this->resetExceededTime($twoStepAuth);
@@ -179,12 +180,12 @@ class TwoStepController extends Controller
         }
     }
 
-/**
- * Resend the validation code triggered by user
- *
- * @return \Illuminate\Http\Response
- *
- */
+    /**
+     * Resend the validation code triggered by user
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
     public function resend()
     {
         $twoStepAuth = $this->_twoStepAuth;

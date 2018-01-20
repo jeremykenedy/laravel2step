@@ -41,7 +41,7 @@ class laravel2stepServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish files for Laravel Monitor.
+     * Publish files for Laravel 2-Step Verification.
      *
      * @return void
      */
@@ -50,25 +50,28 @@ class laravel2stepServiceProvider extends ServiceProvider
         $publishTag = 'laravel2step';
 
         $this->publishes([
-            __DIR__.'/App/Mail/SendVerificationCode.php' => app_path('Mail/SendVerificationCode.php'),
-        ], $publishTag);
-
-        $this->publishes([
             __DIR__.'/config/laravel2step.php' => base_path('config/laravel2step.php'),
         ], $publishTag);
 
+        $this->publishes([
+            __DIR__ . '/database/migrations/' => base_path('/database/migrations'),
+        ], $publishTag);
 
-        // $this->publishes([
-        //     __DIR__.'/resources/views/emails/verification.blade.php' => resource_path('views/emails/verification.blade.php'),
-        // ], $publishTag);
+        $this->publishes([
+            __DIR__.'/public/css' => public_path('css/laravel2step'),
+        ], $publishTag);
 
-        // $this->publishes([
-        //     __DIR__.'/resources/views' => base_path('resources/views/vendor/laravel2step'),
-        // ], $publishTag);
+        $this->publishes([
+            __DIR__.'/resources/assets/scss' => resource_path('assets/scss/laravel2step'),
+        ], $publishTag);
 
-        // $this->publishes([
-        //     __DIR__.'/resources/lang' => base_path('resources/lang/vendor/laravel2step'),
-        // ], $publishTag);
+        $this->publishes([
+            __DIR__.'/resources/views' => resource_path('views/vendor/laravel2step'),
+        ], $publishTag);
+
+        $this->publishes([
+            __DIR__.'/resources/lang' => base_path('resources/lang/vendor/laravel2step'),
+        ], $publishTag);
 
     }
 }

@@ -45,8 +45,6 @@ switch ($remainingAttempts) {
 
                     <form id="verification_form" class="form-horizontal" method="POST" >
 
-                        <meta name="_token" content="{!! csrf_token() !!}" />
-
                         <div class="form-group margin-bottom-1 code-inputs">
                             <div class="col-xs-3">
                                 <div class="{{ $errors->has('v_input_1') ? ' has-error' : '' }}">
@@ -138,6 +136,9 @@ switch ($remainingAttempts) {
 @endsection
 
 @section('foot')
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     @include('laravel2step::scripts.input-parsing-auto-stepper');
 
     <script>
@@ -228,65 +229,56 @@ switch ($remainingAttempts) {
 
     </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.0/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.4.0/sweetalert2.all.js"></script>
+    <script type="text/javascript">
 
+        $("#resend_code_trigger").click(function(event) {
+            event.preventDefault();
 
-<script type="text/javascript">
+            var self = $(this);
+            var resultStatus;
+            var resultData;
+            var endpoint = "/verification/resend";
 
-    $("#resend_code_trigger").click(function(event) {
-        event.preventDefault();
+            self.addClass('disabled')
+            .attr("disabled", true);
 
-        var self = $(this);
-        var resultStatus;
-        var resultData;
-        var endpoint = "/verification/resend";
-
-        self.addClass('disabled')
-        .attr("disabled", true);
-
-        swal({
-          text: 'Sending verification code ...',
-          timer: 1500,
-          allowOutsideClick: false,
-          grow: false,
-          animation: false,
-          onOpen: () => {
-            swal.showLoading();
-            $.ajax(
-                {
-                    type: "post",
-                    url: endpoint,
-                    success: function(response, status, data){
-                        resultData = response;
-                        resultStatus = status;
-                    },
-                    error: function (response, status, error) {
-                        resultData = error;
-                        resultStatus = status;
-                    }
-                }
-            )
-          }
-        }).then((result) => {
             swal({
-                text: resultData.title,
-                text: resultData.message,
-                type: resultStatus,
-                grow: false,
-                animation: false,
-                allowOutsideClick: false,
-                buttonsStyling: false,
-                confirmButtonClass: 'btn btn-lg btn-' + resultStatus,
-                confirmButtonText: 'Ok',
-                timer: 5000,
+              text: 'Sending verification code ...',
+              allowOutsideClick: false,
+              grow: false,
+              animation: false,
+              onOpen: () => {
+                swal.showLoading();
+                $.ajax(
+                    {
+                        type: "post",
+                        url: endpoint,
+                        success: function(response, status, data){
+                            swalCallback(response.title, response.message, status);
+                        },
+                        error: function (response, status, error) {
+                            swalCallback(error, error, status);
+                        }
+                    }
+                )
+              }
             });
-
-            self.removeClass('disabled')
-            .attr("disabled", false);
-
-        })
-    });
-
-</script>
+            function swalCallback(title, message, status) {
+                swal({
+                    text: title,
+                    text: message,
+                    type: status,
+                    grow: false,
+                    animation: false,
+                    allowOutsideClick: false,
+                    buttonsStyling: false,
+                    confirmButtonClass: 'btn btn-lg btn-' + status,
+                    confirmButtonText: 'Ok',
+                });
+                self.removeClass('disabled').attr("disabled", false);
+            }
+        });
+    </script>
 
 @endsection
