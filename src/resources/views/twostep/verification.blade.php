@@ -279,7 +279,7 @@ switch ($remainingAttempts) {
                     allowOutsideClick: false,
                     buttonsStyling: false,
                     confirmButtonClass: 'btn btn-lg btn-' + status,
-                    confirmButtonText: 'Ok',
+                    confirmButtonText: "{{ trans('laravel2step::laravel-verification.verificationModalConfBtn') }}",
                 });
                 self.removeClass('disabled').attr("disabled", false);
             }

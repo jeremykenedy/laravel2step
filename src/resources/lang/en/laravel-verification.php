@@ -40,4 +40,6 @@ return [
     'verificationLockedTitle'       => 'Doh!',
     'verificationLockedMessage'     => 'Account Locked!',
 
+    'verificationModalConfBtn'      => 'Ok',
+
 ];

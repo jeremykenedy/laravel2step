@@ -2,9 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/jeremykenedy/laravel2step/v/stable)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![Total Downloads](https://poser.pugx.org/jeremykenedy/laravel2step/downloads)](https://packagist.org/packages/jeremykenedy/laravel2step)
-[![License](https://poser.pugx.org/jeremykenedy/laravel2step/license)](https://packagist.org/packages/jeremykenedy/laravel2step)
-
-###### Note: Package is still in progress but is almost there.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Table of contents:
 - [About](#about)
