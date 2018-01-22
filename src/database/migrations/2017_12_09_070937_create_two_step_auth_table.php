@@ -1,9 +1,9 @@
 <?php
 
-use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
 
 class CreateTwoStepAuthTable extends Migration
 {
