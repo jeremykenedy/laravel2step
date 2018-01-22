@@ -86,6 +86,10 @@ class TwoStepController extends Controller
      */
     public function showVerification()
     {
+        if (!config('laravel2step.laravel2stepEnabled')) {
+            abort(404);
+        }
+
         $twoStepAuth = $this->_twoStepAuth;
         $authStatus  = $this->_authStatus;
 
@@ -140,6 +144,10 @@ class TwoStepController extends Controller
      */
     public function verify(Request $request)
     {
+        if (!config('laravel2step.laravel2stepEnabled')) {
+            abort(404);
+        }
+
         if($request->ajax()) {
 
             $validator = Validator::make($request->all(), [
@@ -187,10 +195,12 @@ class TwoStepController extends Controller
      */
     public function resend()
     {
+        if (!config('laravel2step.laravel2stepEnabled')) {
+            abort(404);
+        }
+
         $twoStepAuth = $this->_twoStepAuth;
         $this->sendVerificationCodeNotification($twoStepAuth);
-
-
 
         $returnData = [
             'title' => trans('laravel2step::laravel-verification.verificationEmailSuccess'),
