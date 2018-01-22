@@ -94,7 +94,11 @@ LARAVEL_2STEP_EXCEEDED_COUNT=3
 LARAVEL_2STEP_EXCEEDED_COUNTDOWN_MINUTES=1440
 LARAVEL_2STEP_VERIFIED_LIFETIME_MINUTES=360
 LARAVEL_2STEP_RESET_BUFFER_IN_SECONDS=300
-LARAVEL_2STEP_CSS_ENABLED=true
+LARAVEL_2STEP_CSS_FILE="css/laravel2step/app.css"
+LARAVEL_2STEP_APP_CSS_ENABLED=false
+LARAVEL_2STEP_APP_CSS="css/app.css"
+LARAVEL_2STEP_BOOTSTRAP_CSS_CDN_ENABLED=true
+LARAVEL_2STEP_BOOTSTRAP_CSS_CDN="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 ```
 
 ### Usage
@@ -187,14 +191,9 @@ Route::group(['middleware' => ['twostep']], function () {
 * File tree generated using command `tree -a -I '.git|node_modules|vendor|storage|tests`
 
 ### Future
-* Have more configurable options via the config file to run to env file. For:
-    * Optional compiled CSS/JS
-    * Optional use of modals/alerts in front end with optional sweetalert2.js
-    * Configurable blade extensions options.
-    * Its own HTML email template.
-* Make Facade
 * Unit Tests
 * Travis-CI Integration.
+* Its own HTML email template.
 * Add in additional notifications for SMS or ???.
 * Add in capture IP Address.
 * Change to incremental tables and logic accordingly

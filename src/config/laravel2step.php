@@ -54,6 +54,10 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'laravel2stepCssEnabled'    => env('LARAVEL_2STEP_CSS_ENABLED', true),
+    'laravel2stepAppCssEnabled'         => env('LARAVEL_2STEP_APP_CSS_ENABLED', false),
+    'laravel2stepAppCss'                => env('LARAVEL_2STEP_APP_CSS', 'css/app.css'),
+    'laravel2stepBootstrapCssCdnEnbled' => env('LARAVEL_2STEP_BOOTSTRAP_CSS_CDN_ENABLED', true),
+    'laravel2stepBootstrapCssCdn'       => env('LARAVEL_2STEP_BOOTSTRAP_CSS_CDN', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'),
+    'laravel2stepCssFile'               => env('LARAVEL_2STEP_CSS_FILE', 'css/laravel2step/app.css'),
 
 ];
