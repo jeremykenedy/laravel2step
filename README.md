@@ -16,6 +16,7 @@ Table of contents:
 - [Screenshots](#screenshots)
 - [File Tree](#file-tree)
 - [Future](#future)
+- [Opening an Issue](#opening-an-issue)
 - [License](#license)
 
 ### About
@@ -198,6 +199,21 @@ Route::group(['middleware' => ['twostep']], function () {
 * Add in capture IP Address.
 * Change to incremental tables and logic accordingly
     * Create Artisan command and job to prune said entries.
+
+### Opening an Issue
+Before opening an issue there are a couple of considerations:
+* If you did not **star this repo** *I will close your issue immediatly without consideration.* **My time is valuable**.
+* **Read the instructions** and make sure all steps were *followed correctly*.
+* **Check** that the issue is not *specific to your development environment* setup.
+* **Provide** *duplication steps*.
+* **Attempt to look into the issue**, and if you *have a solution, make a pull request*.
+* **Show that you have made an attempt** to *look into the issue*.
+* **Check** to see if the issue you are *reporting is a duplicate* of a previous reported issue.
+* **Following these instructions show me that you have tried.**
+* If you have a questions send me an email to jeremykenedy@gmail.com
+* Please be considerate that this is an open source project that I provide to the community for FREE when openeing an issue. 
+
+Open source projects are a the community’s responsibility to use, contribute, and debug.
 
 ### License
 Laravel 2-Step Verification is licensed under the MIT license. Enjoy!
