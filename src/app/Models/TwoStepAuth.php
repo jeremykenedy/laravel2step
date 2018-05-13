@@ -13,7 +13,7 @@ class TwoStepAuth extends Model
      */
     protected $table;
 
-   /**
+    /**
      * The connection name for the model.
      *
      * @var string
@@ -110,17 +110,17 @@ class TwoStepAuth extends Model
     /**
      * Get a validator for an incoming Request.
      *
-     * @param  array $merge (rules to optionally merge)
+     * @param array $merge (rules to optionally merge)
      *
      * @return array
      */
-    public static function rules($merge=[])
+    public static function rules($merge = [])
     {
         return array_merge([
             'userId'     => 'required|integer',
             'authCode'   => 'required|string|max:4|min:4',
             'authCount'  => 'required|integer',
-            'authStatus' => 'required|boolean'
+            'authStatus' => 'required|boolean',
         ],
         $merge);
     }

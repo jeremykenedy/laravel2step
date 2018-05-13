@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 class Laravel2stepFacade extends Facade
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected static function getFacadeAccessor()
     {

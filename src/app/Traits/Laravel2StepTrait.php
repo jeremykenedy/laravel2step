@@ -5,25 +5,23 @@ namespace jeremykenedy\laravel2step\App\Traits;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
 use jeremykenedy\laravel2step\App\Notifications\SendVerificationCodeEmail;
 
 trait Laravel2StepTrait
 {
     /**
-     * Check if the user is authorized
+     * Check if the user is authorized.
      *
-     * @param  Request $request
+     * @param Request $request
      *
-     * @return boolean
+     * @return bool
      */
     public function twoStepVerification($request)
     {
         $user = Auth::User();
 
         if ($user) {
-
             $twoStepAuthStatus = $this->checkTwoStepAuthStatus($user->id);
 
             if ($twoStepAuthStatus->authStatus !== true) {
@@ -41,18 +39,18 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Check time since user was last verified and take apprpriate action
+     * Check time since user was last verified and take apprpriate action.
      *
      * @param collection $twoStepAuth
      *
-     * @return boolean
+     * @return bool
      */
     private function checkTimeSinceVerified($twoStepAuth)
     {
-        $expireMinutes  = config('laravel2step.laravel2stepVerifiedLifetimeMinutes');
-        $now            = Carbon::now();
-        $expire         = Carbon::parse($twoStepAuth->authDate)->addMinutes($expireMinutes);
-        $expired        = $now->gt($expire);
+        $expireMinutes = config('laravel2step.laravel2stepVerifiedLifetimeMinutes');
+        $now = Carbon::now();
+        $expire = Carbon::parse($twoStepAuth->authDate)->addMinutes($expireMinutes);
+        $expired = $now->gt($expire);
 
         if ($expired) {
             $this->resetAuthStatus($twoStepAuth);
@@ -64,7 +62,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Reset TwoStepAuth collection item and code
+     * Reset TwoStepAuth collection item and code.
      *
      * @param collection $twoStepAuth
      *
@@ -72,11 +70,11 @@ trait Laravel2StepTrait
      */
     private function resetAuthStatus($twoStepAuth)
     {
-        $twoStepAuth->authCode    = $this->generateCode();
-        $twoStepAuth->authCount   = 0;
-        $twoStepAuth->authStatus  = 0;
-        $twoStepAuth->authDate    = NULL;
-        $twoStepAuth->requestDate = NULL;
+        $twoStepAuth->authCode = $this->generateCode();
+        $twoStepAuth->authCount = 0;
+        $twoStepAuth->authStatus = 0;
+        $twoStepAuth->authDate = null;
+        $twoStepAuth->requestDate = null;
 
         $twoStepAuth->save();
 
@@ -84,9 +82,9 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Generate Authorization Code
+     * Generate Authorization Code.
      *
-     * @param integer $length
+     * @param int    $length
      * @param string $prefix
      * @param string $suffix
      *
@@ -94,15 +92,15 @@ trait Laravel2StepTrait
      */
     private function generateCode(int $length = 4, string $prefix = '', string $suffix = '')
     {
-        for($i = 0; $i < $length; $i++){
-            $prefix .= random_int(0,1) ? chr(random_int(65, 90)) : random_int(0, 9);
+        for ($i = 0; $i < $length; $i++) {
+            $prefix .= random_int(0, 1) ? chr(random_int(65, 90)) : random_int(0, 9);
         }
 
-        return $prefix . $suffix;
+        return $prefix.$suffix;
     }
 
     /**
-     * Create/retreive 2step verification object
+     * Create/retreive 2step verification object.
      *
      * @param int $userId
      *
@@ -125,7 +123,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Retreive the Verification Status
+     * Retreive the Verification Status.
      *
      * @param int $userId
      *
@@ -137,7 +135,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Format verification exceeded timings with Carbon
+     * Format verification exceeded timings with Carbon.
      *
      * @param string $time
      *
@@ -145,8 +143,8 @@ trait Laravel2StepTrait
      */
     protected function exceededTimeParser($time)
     {
-        $tomorrow   = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->format('l, F jS Y h:i:sa');
-        $remaining  = $time->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->diffForHumans(null, true);
+        $tomorrow = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->format('l, F jS Y h:i:sa');
+        $remaining = $time->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->diffForHumans(null, true);
 
         $data = [
             'tomorrow'  => $tomorrow,
@@ -157,16 +155,16 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Check if time since account lock has expired and return true if account verification can be reset
+     * Check if time since account lock has expired and return true if account verification can be reset.
      *
      * @param datetime $time
      *
-     * @return boolean
+     * @return bool
      */
     protected function checkExceededTime($time)
     {
-        $now     = Carbon::now();
-        $expire  = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'));
+        $now = Carbon::now();
+        $expire = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'));
         $expired = $now->gt($expire);
 
         if ($expired) {
@@ -186,14 +184,14 @@ trait Laravel2StepTrait
     protected function resetExceededTime($twoStepEntry)
     {
         $twoStepEntry->authCount = 0;
-        $twoStepEntry->authCode  = $this->generateCode();
+        $twoStepEntry->authCode = $this->generateCode();
         $twoStepEntry->save();
 
         return $twoStepEntry;
     }
 
     /**
-     * Successful activation actions
+     * Successful activation actions.
      *
      * @param collection $twoStepAuth
      *
@@ -201,10 +199,10 @@ trait Laravel2StepTrait
      */
     protected function resetActivationCountdown($twoStepAuth)
     {
-        $twoStepAuth->authCode    = $this->generateCode();
-        $twoStepAuth->authCount   = 0;
-        $twoStepAuth->authStatus  = 1;
-        $twoStepAuth->authDate    = Carbon::now();
+        $twoStepAuth->authCode = $this->generateCode();
+        $twoStepAuth->authCount = 0;
+        $twoStepAuth->authStatus = 1;
+        $twoStepAuth->authDate = Carbon::now();
         $twoStepAuth->requestDate = null;
 
         $twoStepAuth->save();
@@ -213,7 +211,7 @@ trait Laravel2StepTrait
     /**
      * Send verification code via notify.
      *
-     * @param array $user
+     * @param array  $user
      * @param string $deliveryMethod (nullable)
      * @param string $code
      *
