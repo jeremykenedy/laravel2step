@@ -6,7 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use jeremykenedy\laravel2step\App\Http\Middleware\Laravel2step;
 
-class laravel2stepServiceProvider extends ServiceProvider
+class Laravel2stepServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -22,7 +22,7 @@ class laravel2stepServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->middlewareGroup('twostep',[Laravel2step::class]);
+        $router->middlewareGroup('twostep', [Laravel2step::class]);
         $this->loadTranslationsFrom(__DIR__.'/resources/lang/', 'laravel2step');
     }
 
@@ -54,7 +54,7 @@ class laravel2stepServiceProvider extends ServiceProvider
         ], $publishTag);
 
         $this->publishes([
-            __DIR__ . '/database/migrations/' => base_path('/database/migrations'),
+            __DIR__.'/database/migrations/' => base_path('/database/migrations'),
         ], $publishTag);
 
         $this->publishes([
@@ -72,6 +72,5 @@ class laravel2stepServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/resources/lang' => base_path('resources/lang/vendor/laravel2step'),
         ], $publishTag);
-
     }
 }

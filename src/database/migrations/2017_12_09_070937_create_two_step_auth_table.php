@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
 
@@ -14,10 +14,10 @@ class CreateTwoStepAuthTable extends Migration
      */
     public function up()
     {
-        $twoStepAuth    = new TwoStepAuth;
-        $connection     = $twoStepAuth->getConnectionName();
-        $table          = $twoStepAuth->getTableName();
-        $tableCheck     = Schema::connection($connection)->hasTable($table);
+        $twoStepAuth = new TwoStepAuth();
+        $connection = $twoStepAuth->getConnectionName();
+        $table = $twoStepAuth->getTableName();
+        $tableCheck = Schema::connection($connection)->hasTable($table);
 
         if (!$tableCheck) {
             Schema::connection($connection)->create($table, function (Blueprint $table) {
@@ -41,9 +41,9 @@ class CreateTwoStepAuthTable extends Migration
      */
     public function down()
     {
-        $twoStepAuth    = new TwoStepAuth;
-        $connection     = $twoStepAuth->getConnectionName();
-        $table          = $twoStepAuth->getTableName();
+        $twoStepAuth = new TwoStepAuth();
+        $connection = $twoStepAuth->getConnectionName();
+        $table = $twoStepAuth->getTableName();
 
         Schema::connection($connection)->dropIfExists($table);
     }
