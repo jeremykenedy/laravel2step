@@ -4,6 +4,9 @@
 [![Latest Stable Version](https://poser.pugx.org/jeremykenedy/laravel2step/v/stable)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![Total Downloads](https://poser.pugx.org/jeremykenedy/laravel2step/downloads)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![StyleCI](https://github.styleci.io/repos/113799854/shield?branch=master)](https://github.styleci.io/repos/113799854)
+[![Build Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Table of contents:
