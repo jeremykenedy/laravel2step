@@ -37,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "jeremykenedy\\laravel2step\\laravel2stepServiceProvider"
+                "jeremykenedy\\laravel2step\\Laravel2stepServiceProvider"
             ]
         }
     },
