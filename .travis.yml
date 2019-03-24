@@ -4,10 +4,9 @@ dist: trusty
 group: edge
 
 php:
-  - 7.0
   - 7.1
   - 7.2
-  - nightly
+  - 7.3
 
 sudo: false
 
@@ -15,8 +14,20 @@ services:
   - mysql
 
 before_script:
+  - mysql -u root -e 'create database laravel2step;'
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install
+  - composer create-project --prefer-dist laravel/laravel laravel2step
+  - cp .env.travis laravel2step/.env
+  - cd laravel2step
+  - composer self-update
+  - composer install --prefer-source --no-interaction
+  - composer require jeremykenedy/laravel2step
+  - php artisan key:generate
+  - php artisan vendor:publish --tag=laravel2step
+  - php artisan make:auth
+  - composer dump-autoload
+  - php artisan clear-compiled
 
 before_install:
   - travis_retry composer self-update
