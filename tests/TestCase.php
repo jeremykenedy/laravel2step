@@ -2,7 +2,6 @@
 
 namespace jeremykenedy\laravel2step\Test;
 
-use jeremykenedy\laravel2step\Laravel2stepFacade;
 use jeremykenedy\laravel2step\Laravel2stepServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
