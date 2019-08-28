@@ -7,6 +7,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel2step/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/1372-shield.svg)](https://madewithlaravel.com/p/laravel-2-step-verification/shield-link)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Table of contents:
