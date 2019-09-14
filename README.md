@@ -47,10 +47,15 @@ Laravel 2-Step Authentication Verification for Laravel. Can be used in out the b
 ### Installation Instructions
 1. From your projects root folder in terminal run:
 
-    Laravel 5.8+ use:
+    Laravel 6+ use:
 
     ```bash
         composer require jeremykenedy/laravel2step
+    ```
+
+    Laravel 5.8 use:
+    ```bash
+        composer require jeremykenedy/laravel2step:v1.4.0
     ```
 
     Laravel 5.7 and below use:
