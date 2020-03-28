@@ -28,7 +28,7 @@ Table of contents:
 ### About
 Laravel 2-Step verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code.
 
-Laravel 2-Step Authentication Verification for Laravel. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects. 
+Laravel 2-Step Authentication Verification for Laravel. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects.
 
 ### Features
 
@@ -42,7 +42,7 @@ Laravel 2-Step Authentication Verification for Laravel. Can be used in out the b
 | Locked Page |
 
 ### Requirements
-* [Laravel 5.3, 5.4, or 5.5+](https://laravel.com/docs/installation)
+* [Laravel 5.3, 5.4, 5.5+ ,6+, or 7+](https://laravel.com/docs/installation)
 
 ### Installation Instructions
 1. From your projects root folder in terminal run:
@@ -231,7 +231,7 @@ Before opening an issue there are a couple of considerations:
 * **Following these instructions show me that you have tried.**
 * If you have a questions send me an email to jeremykenedy@gmail.com
 * Need some help, I can do my best on Slack: https://opensourcehelpgroup.slack.com
-* Please be considerate that this is an open source project that I provide to the community for FREE when openeing an issue. 
+* Please be considerate that this is an open source project that I provide to the community for FREE when openeing an issue.
 
 Open source projects are a the community’s responsibility to use, contribute, and debug.
 

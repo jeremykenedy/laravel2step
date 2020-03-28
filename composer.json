@@ -16,13 +16,13 @@
     ],
     "require": {
         "php": "^7.2",
-        "laravel/framework": "^6.0"
+        "laravel/framework": "6.*|7.*"
     },
     "require-dev": {
         "illuminate/support": "^6.0.2",
         "orchestra/testbench": "^3.8.5",
         "phpunit/phpunit": "^8.3.4",
-        "laravel/laravel": "^6.0"
+        "laravel/framework": "6.*|7.*"
     },
     "autoload": {
         "psr-4": {
