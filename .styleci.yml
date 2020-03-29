@@ -1,0 +1,5 @@
+preset: psr4
+
+enabled:
+  - strict
+  - align_double_arrow
