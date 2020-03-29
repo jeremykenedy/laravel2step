@@ -1,5 +1,8 @@
-preset: recommended
+preset: laravel
 
 enabled:
   - strict
   - align_double_arrow
+
+disabled:
+  - unused_use
