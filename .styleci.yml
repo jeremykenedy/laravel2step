@@ -1,4 +1,4 @@
-preset: psr4
+preset: recommended
 
 enabled:
   - strict
