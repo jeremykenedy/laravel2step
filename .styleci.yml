@@ -1,4 +1,4 @@
-preset: psr12
+preset: laravel
 
 enabled:
   - strict
