@@ -1,4 +1,7 @@
+![Laravel 2 Step Verification](https://github-project-images.s3-us-west-2.amazonaws.com/logos/laravel2step-logo.png)
+
 # Laravel 2 Step Verification
+Laravel 2-Step Verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects.
 
 [![Travis-CI Build](https://travis-ci.org/jeremykenedy/laravel2step.svg?branch=master)](https://travis-ci.org/jeremykenedy/laravel2step)
 [![Latest Stable Version](https://poser.pugx.org/jeremykenedy/laravel2step/v/stable)](https://packagist.org/packages/jeremykenedy/laravel2step)
@@ -11,7 +14,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Table of contents:
-- [About](#about)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation Instructions](#installation-instructions)
@@ -24,11 +26,6 @@ Table of contents:
 - [Future](#future)
 - [Opening an Issue](#opening-an-issue)
 - [License](#license)
-
-### About
-Laravel 2-Step verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code.
-
-Laravel 2-Step Authentication Verification for Laravel. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects.
 
 ### Features
 
@@ -237,4 +234,3 @@ Open source projects are a the community’s responsibility to use, contribute, 
 
 ### License
 Laravel 2-Step Verification is licensed under the MIT license. Enjoy!
-
