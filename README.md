@@ -39,7 +39,7 @@ Table of contents:
 | Locked Page |
 
 ### Requirements
-* [Laravel 5.3, 5.4, 5.5+ ,6+, or 7+](https://laravel.com/docs/installation)
+* [Laravel 5.3, 5.4, 5.5+ ,6+, 7+, and 8+](https://laravel.com/docs/installation)
 
 ### Installation Instructions
 1. From your projects root folder in terminal run:
