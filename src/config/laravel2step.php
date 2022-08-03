@@ -65,6 +65,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-   'laravel2stepEmailQueue' => env('LARAVEL_2STEP_EMAIL_QUEUE', null),
+    'laravel2stepEmailQueue' => env('LARAVEL_2STEP_EMAIL_QUEUE', null),
 
 ];
