@@ -59,4 +59,12 @@ return [
     'laravel2stepBootstrapCssCdn'       => env('LARAVEL_2STEP_BOOTSTRAP_CSS_CDN', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'),
     'laravel2stepCssFile'               => env('LARAVEL_2STEP_CSS_FILE', 'css/laravel2step/app.css'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Verification Email Queue
+    |--------------------------------------------------------------------------
+    */
+
+    'laravel2stepEmailQueue' => env('LARAVEL_2STEP_EMAIL_QUEUE', null),
+
 ];
