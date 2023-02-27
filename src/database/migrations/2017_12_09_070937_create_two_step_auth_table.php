@@ -20,17 +20,19 @@ class CreateTwoStepAuthTable extends Migration
         $tableCheck = Schema::connection($connection)->hasTable($table);
 
         if (!$tableCheck) {
-            Schema::connection($connection)->create($table, function (Blueprint $table) {
-                $table->increments('id');
-                $table->unsignedBigInteger('userId')->unsigned()->index();
-                $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
-                $table->string('authCode')->nullable();
-                $table->integer('authCount');
-                $table->boolean('authStatus')->default(false);
-                $table->dateTime('authDate')->nullable();
-                $table->dateTime('requestDate')->nullable();
-                $table->timestamps();
-            });
+            Schema::connection($connection)->create(
+                $table, function (Blueprint $table) {
+                    $table->increments('id');
+                    $table->unsignedBigInteger('userId')->unsigned()->index();
+                    $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+                    $table->string('authCode')->nullable();
+                    $table->integer('authCount');
+                    $table->boolean('authStatus')->default(false);
+                    $table->dateTime('authDate')->nullable();
+                    $table->dateTime('requestDate')->nullable();
+                    $table->timestamps();
+                }
+            );
         }
     }
 

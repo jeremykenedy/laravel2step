@@ -25,23 +25,23 @@ class Laravel2step
         $nextUri = config('app.url').'/'.$uri;
 
         switch ($uri) {
-            case 'verification/needed':
-            case 'password/reset':
-            case 'register':
-            case 'logout':
-            case 'login':
-            case '/':
-                break;
+        case 'verification/needed':
+        case 'password/reset':
+        case 'register':
+        case 'logout':
+        case 'login':
+        case '/':
+            break;
 
-            default:
-                session(['nextUri' => $nextUri]);
+        default:
+            session(['nextUri' => $nextUri]);
 
-                if (config('laravel2step.laravel2stepEnabled')) {
-                    if ($this->twoStepVerification($request) !== true) {
-                        return redirect('verification/needed');
-                    }
+            if (config('laravel2step.laravel2stepEnabled')) {
+                if ($this->twoStepVerification($request) !== true) {
+                    return redirect('verification/needed');
                 }
-                break;
+            }
+            break;
         }
 
         return $response;

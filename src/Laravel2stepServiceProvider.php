@@ -49,28 +49,40 @@ class Laravel2stepServiceProvider extends ServiceProvider
     {
         $publishTag = 'laravel2step';
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/config/laravel2step.php' => base_path('config/laravel2step.php'),
-        ], $publishTag);
+            ], $publishTag
+        );
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/database/migrations/' => base_path('/database/migrations'),
-        ], $publishTag);
+            ], $publishTag
+        );
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/public/css' => public_path('css/laravel2step'),
-        ], $publishTag);
+            ], $publishTag
+        );
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/resources/assets/scss' => resource_path('assets/scss/laravel2step'),
-        ], $publishTag);
+            ], $publishTag
+        );
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/resources/views' => resource_path('views/vendor/laravel2step'),
-        ], $publishTag);
+            ], $publishTag
+        );
 
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/resources/lang' => base_path('resources/lang/vendor/laravel2step'),
-        ], $publishTag);
+            ], $publishTag
+        );
     }
 }

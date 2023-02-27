@@ -28,11 +28,13 @@ class TwoStepController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware(function ($request, $next) {
-            $this->setUser2StepData();
+        $this->middleware(
+            function ($request, $next) {
+                $this->setUser2StepData();
 
-            return $next($request);
-        });
+                return $next($request);
+            }
+        );
     }
 
     /**
@@ -146,12 +148,14 @@ class TwoStepController extends Controller
         }
 
         if ($request->ajax()) {
-            $validator = Validator::make($request->all(), [
+            $validator = Validator::make(
+                $request->all(), [
                 'v_input_1' => 'required|min:1|max:1',
                 'v_input_2' => 'required|min:1|max:1',
                 'v_input_3' => 'required|min:1|max:1',
                 'v_input_4' => 'required|min:1|max:1',
-            ]);
+                ]
+            );
 
             if ($validator->fails()) {
                 $returnData = $this->invalidCodeReturnData($validator->errors());
