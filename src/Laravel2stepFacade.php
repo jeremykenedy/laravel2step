@@ -3,6 +3,7 @@
 namespace jeremykenedy\laravel2step;
 
 use Illuminate\Support\Facades\Facade;
+use jeremykenedy\laravel2step\App\Http\Middleware\Laravel2step;
 
 class Laravel2stepFacade extends Facade
 {
