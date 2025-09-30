@@ -17,7 +17,7 @@ return [
     */
 
     'laravel2stepDatabaseConnection'  => env('LARAVEL_2STEP_DATABASE_CONNECTION', 'mysql'),
-    'laravel2stepDatabaseTable'       => env('LARAVEL_2STEP_DATABASE_TABLE', 'twoStepAuth'),
+    'laravel2stepDatabaseTable'       => env('LARAVEL_2STEP_DATABASE_TABLE', 'laravel2step'),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'verificationEmailFrom'     => env('LARAVEL_2STEP_EMAIL_FROM', env('MAIL_USERNAME')),
+    'verificationEmailFrom'     => env('LARAVEL_2STEP_EMAIL_FROM', env('MAIL_FROM_ADDRESS')),
     'verificationEmailFromName' => env('LARAVEL_2STEP_EMAIL_FROM_NAME', config('app.name').' 2-Step Verification'),
 
     /*

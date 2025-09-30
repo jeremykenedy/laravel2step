@@ -86,7 +86,7 @@ class Laravel2stepServiceProvider extends ServiceProvider
 
         $this->publishes(
             [
-                __DIR__.'/resources/lang' => base_path('resources/lang/vendor/laravel2step'),
+                __DIR__.'/resources/lang' => resource_path('lang/vendor/laravel2step'),
             ],
             $publishTag
         );
