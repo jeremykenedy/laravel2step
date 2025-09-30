@@ -50,7 +50,7 @@ switch ($remainingAttempts) {
                                     <label for="v_input_1" class="sr-only control-label">
                                         {{ trans('laravel2step::laravel-verification.inputAlt1') }}
                                     </label>
-                                    <input type="text"  id="v_input_1" class="form-control text-center required" required name="v_input_1" value="" autofocus maxlength="1" minlength="1" tabindex="1" placeholder="•">
+                                    <input type="text" id="v_input_1" class="form-control text-center required" required name="v_input_1" value="" autofocus maxlength="1" minlength="1" tabindex="1" placeholder="•">
                                     @if ($errors->has('v_input_1'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('v_input_1') }}</strong>
@@ -63,7 +63,7 @@ switch ($remainingAttempts) {
                                     <label for="v_input_2" class="sr-only control-label">
                                         {{ trans('laravel2step::laravel-verification.inputAlt2') }}
                                     </label>
-                                    <input type="text"  id="v_input_2" class="form-control text-center required" required name="v_input_2" value="" maxlength="1" minlength="1" tabindex="2" placeholder="•">
+                                    <input type="text" id="v_input_2" class="form-control text-center required" required name="v_input_2" value="" maxlength="1" minlength="1" tabindex="2" placeholder="•">
                                     @if ($errors->has('v_input_2'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('v_input_2') }}</strong>
@@ -76,7 +76,7 @@ switch ($remainingAttempts) {
                                     <label for="v_input_3" class="sr-only control-label">
                                         {{ trans('laravel2step::laravel-verification.inputAlt3') }}
                                     </label>
-                                    <input type="text"  id="v_input_3" class="form-control text-center required" required name="v_input_3" value="" maxlength="1" minlength="1" tabindex="3" placeholder="•">
+                                    <input type="text" id="v_input_3" class="form-control text-center required" required name="v_input_3" value="" maxlength="1" minlength="1" tabindex="3" placeholder="•">
                                     @if ($errors->has('v_input_3'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('v_input_3') }}</strong>
@@ -89,7 +89,7 @@ switch ($remainingAttempts) {
                                     <label for="v_input_4" class="sr-only control-label">
                                         {{ trans('laravel2step::laravel-verification.inputAlt4') }}
                                     </label>
-                                    <input type="text"  id="v_input_4" class="form-control text-center required last-input " required name="v_input_4" value="" maxlength="1" minlength="1" tabindex="4" placeholder="•">
+                                    <input type="text" id="v_input_4" class="form-control text-center required last-input " required name="v_input_4" value="" maxlength="1" minlength="1" tabindex="4" placeholder="•">
                                     @if ($errors->has('v_input_4'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('v_input_4') }}</strong>
