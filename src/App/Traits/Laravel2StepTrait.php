@@ -2,9 +2,9 @@
 
 namespace jeremykenedy\laravel2step\App\Traits;
 
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
 use jeremykenedy\laravel2step\App\Notifications\SendVerificationCodeEmail;
 
@@ -47,7 +47,7 @@ trait Laravel2StepTrait
      */
     private function checkTimeSinceVerified($twoStepAuth)
     {
-        $expireMinutes = config('laravel2step.laravel2stepVerifiedLifetimeMinutes');
+        $expireMinutes = (int) config('laravel2step.laravel2stepVerifiedLifetimeMinutes');
         $now = Carbon::now();
         $expire = Carbon::parse($twoStepAuth->authDate)->addMinutes($expireMinutes);
         $expired = $now->gt($expire);
@@ -143,8 +143,10 @@ trait Laravel2StepTrait
      */
     protected function exceededTimeParser($time)
     {
-        $tomorrow = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->format('l, F jS Y h:i:sa');
-        $remaining = $time->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'))->diffForHumans(null, true);
+        $exceededCountdownMinutes = (int) config('laravel2step.laravel2stepExceededCountdownMinutes');
+        $exceededTime = Carbon::parse($time)->addMinutes($exceededCountdownMinutes);
+        $tomorrow = $exceededTime->format('l, F jS Y h:i:sa');
+        $remaining = $exceededTime->diffForHumans(null, true);
 
         $data = [
             'tomorrow'  => $tomorrow,
@@ -157,14 +159,15 @@ trait Laravel2StepTrait
     /**
      * Check if time since account lock has expired and return true if account verification can be reset.
      *
-     * @param datetime $time
+     * @param string $time
      *
      * @return bool
      */
     protected function checkExceededTime($time)
     {
         $now = Carbon::now();
-        $expire = Carbon::parse($time)->addMinutes(config('laravel2step.laravel2stepExceededCountdownMinutes'));
+        $exceededCountdownMinutes = (int) config('laravel2step.laravel2stepExceededCountdownMinutes');
+        $expire = Carbon::parse($time)->addMinutes($exceededCountdownMinutes);
         $expired = $now->gt($expire);
 
         if ($expired) {

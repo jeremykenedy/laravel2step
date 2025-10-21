@@ -3,11 +3,11 @@
 namespace jeremykenedy\laravel2step\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use jeremykenedy\laravel2step\App\Traits\Laravel2StepTrait;
-use Validator;
 
 class TwoStepController extends Controller
 {
@@ -122,7 +122,7 @@ class TwoStepController extends Controller
         if (!$sentTimestamp) {
             $this->sendVerificationCodeNotification($twoStepAuth);
         } else {
-            $timeBuffer = config('laravel2step.laravel2stepTimeResetBufferSeconds');
+            $timeBuffer = (int) config('laravel2step.laravel2stepTimeResetBufferSeconds');
             $timeAllowedToSendCode = $sentTimestamp->addSeconds($timeBuffer);
             if ($now->gt($timeAllowedToSendCode)) {
                 $this->sendVerificationCodeNotification($twoStepAuth);
