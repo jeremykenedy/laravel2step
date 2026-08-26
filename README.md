@@ -39,7 +39,7 @@ Table of contents:
 | Locked Page |
 
 ### Requirements
-* [Laravel 5.3, 5.4, 5.5+ ,6+, 7+, 8+, 9+, 10+, 11+, and 12+](https://laravel.com/docs/installation)
+* [Laravel 5.3, 5.4, 5.5+ ,6+, 7+, 8+, 9+, 10+, 11+, 12+, and 13+](https://laravel.com/docs/installation)
 
 ### Installation Instructions
 1. From your projects root folder in terminal run:
@@ -103,7 +103,7 @@ Here are the `.env` file variables available:
 LARAVEL_2STEP_ENABLED=true
 LARAVEL_2STEP_DATABASE_CONNECTION=mysql
 LARAVEL_2STEP_DATABASE_TABLE=laravel2step
-LARAVEL_2STEP_USER_MODEL=App\User
+LARAVEL_2STEP_USER_MODEL=App\Models\User
 LARAVEL_2STEP_EMAIL_FROM="anEmailIsrequired@email.com"
 LARAVEL_2STEP_EMAIL_FROM_NAME="Laravel 2 Step Verification"
 LARAVEL_2STEP_EMAIL_SUBJECT='Laravel 2 Step Verification'
