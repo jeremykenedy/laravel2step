@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
 use jeremykenedy\laravel2step\Test\Support\RouteSpy;
@@ -78,6 +79,20 @@ it('lets everyone through when the package is disabled', function (): void {
     $this->actingAs($user)->get('/dashboard')->assertOk();
 
     expect(RouteSpy::$hits)->toBe(1);
+});
+
+it('still blocks when the route authenticates on a guard other than the default', function (): void {
+    config(['auth.guards.secondary' => ['driver' => 'session', 'provider' => 'users']]);
+
+    Route::middleware(['web', 'twostep', 'auth:secondary'])->get('/secondary', [RouteSpy::class, 'hit']);
+
+    $user = $this->createUser();
+
+    Auth::guard('secondary')->setUser($user);
+
+    $this->get('/secondary')->assertRedirect('/verification/needed');
+
+    expect(RouteSpy::$hits)->toBe(0);
 });
 
 it('skips the uris needed to authenticate', function (): void {

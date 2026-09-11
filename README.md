@@ -137,6 +137,8 @@ Route::group(['middleware' => ['twostep']], function () {
 });
 ```
 
+If your routes authenticate on a guard other than the default one, list `twostep` after your authentication middleware, for example `['auth:sanctum', 'twostep']`. The verification check reads the authenticated user, so it needs authentication to have happened first.
+
 ### Routes
 * ```/verification/needed```
 * ```/verification/verify```
