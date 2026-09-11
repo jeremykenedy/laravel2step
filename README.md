@@ -104,21 +104,27 @@ Here are the `.env` file variables available:
 
 ```bash
 LARAVEL_2STEP_ENABLED=true
-LARAVEL_2STEP_DATABASE_CONNECTION=mysql
 LARAVEL_2STEP_DATABASE_TABLE=laravel2step
 LARAVEL_2STEP_USER_MODEL=App\Models\User
-LARAVEL_2STEP_EMAIL_FROM="anEmailIsrequired@email.com"
 LARAVEL_2STEP_EMAIL_FROM_NAME="Laravel 2 Step Verification"
-LARAVEL_2STEP_EMAIL_SUBJECT='Laravel 2 Step Verification'
 LARAVEL_2STEP_EXCEEDED_COUNT=3
 LARAVEL_2STEP_EXCEEDED_COUNTDOWN_MINUTES=1440
 LARAVEL_2STEP_VERIFIED_LIFETIME_MINUTES=360
-LARAVEL_2STEP_RESET_BUFFER_IN_SECONDS=300
+LARAVEL_2STEP_RESET_BUFFER_IN_SECONDS=360
 LARAVEL_2STEP_CSS_FILE="css/laravel2step/app.css"
 LARAVEL_2STEP_APP_CSS_ENABLED=false
 LARAVEL_2STEP_APP_CSS="css/app.css"
 LARAVEL_2STEP_BOOTSTRAP_CSS_CDN_ENABLED=true
-LARAVEL_2STEP_BOOTSTRAP_CSS_CDN="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+LARAVEL_2STEP_BOOTSTRAP_CSS_CDN="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+
+# Optional. Defaults to your application's default database connection.
+# LARAVEL_2STEP_DATABASE_CONNECTION=mysql
+
+# Optional. Defaults to your application's MAIL_FROM_ADDRESS.
+# LARAVEL_2STEP_EMAIL_FROM="verification@example.com"
+
+# Optional. Send the verification email on a named queue.
+# LARAVEL_2STEP_EMAIL_QUEUE=notifications
 ```
 
 ### Usage
@@ -162,7 +168,7 @@ GitHub Actions runs on every pull request, on pushes to `master`, and again ever
 
 | Job | What it covers |
 | :--- | :--- |
-| Tests | PHP 8.2, 8.3, 8.4, and 8.5 against Laravel 12 and 13 |
+| Tests | Laravel 12 on PHP 8.2 to 8.5, Laravel 13 on PHP 8.3 to 8.5 |
 | Lowest dependencies | The oldest dependency versions that resolve against Laravel 12 |
 | Code style | `composer validate --strict` and `pint --test` |
 | Security audit | `composer audit` against known advisories |
