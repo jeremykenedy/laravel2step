@@ -3,7 +3,7 @@
 # Laravel 2 Step Verification
 Laravel 2-Step Verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects.
 
-[![Travis-CI Build](https://travis-ci.org/jeremykenedy/laravel2step.svg?branch=master)](https://travis-ci.org/jeremykenedy/laravel2step)
+[![Tests](https://github.com/jeremykenedy/laravel2step/actions/workflows/tests.yml/badge.svg)](https://github.com/jeremykenedy/laravel2step/actions/workflows/tests.yml)
 [![Latest Stable Version](https://poser.pugx.org/jeremykenedy/laravel2step/v/stable)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![Total Downloads](https://poser.pugx.org/jeremykenedy/laravel2step/downloads)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![StyleCI](https://github.styleci.io/repos/113799854/shield?branch=master)](https://github.styleci.io/repos/113799854)
@@ -21,6 +21,7 @@ Table of contents:
     - [Environment File](#environment-file)
 - [Usage](#usage)
 - [Routes](#routes)
+- [Testing](#testing)
 - [Screenshots](#screenshots)
 - [File Tree](#file-tree)
 - [Future](#future)
@@ -31,15 +32,17 @@ Table of contents:
 
 | Laravel 2 Step Verification Features |
 | :------------ |
-| Uses [Notification](https://laravel.com/docs/5.5/notifications) Class to send user code to users email |
+| Uses [Notification](https://laravel.com/docs/notifications) Class to send user code to users email |
 | Can publish customizable views and assets |
 | Lots of [configuration](#configuration) options |
-| Uses Language [localization](https://laravel.com/docs/5.5/localization) files |
+| Uses Language [localization](https://laravel.com/docs/localization) files |
 | Verificaton Page |
 | Locked Page |
 
 ### Requirements
-* [Laravel 5.3, 5.4, 5.5+ ,6+, 7+, 8+, 9+, 10+, 11+, 12+, and 13+](https://laravel.com/docs/installation)
+* [PHP 7.3+ or 8.0+](https://www.php.net/supported-versions.php)
+* [Laravel 6+, 7+, 8+, 9+, 10+, 11+, 12+, and 13+](https://laravel.com/docs/installation)
+    * For Laravel 5.8 and below see the [installation instructions](#installation-instructions) for the release to require.
 
 ### Installation Instructions
 1. From your projects root folder in terminal run:
@@ -139,6 +142,22 @@ Route::group(['middleware' => ['twostep']], function () {
 * ```/verification/verify```
 * ```/verification/resend```
 
+### Testing
+The package ships with a [Pest](https://pestphp.com) suite that runs against an in memory SQLite database, so it never touches a real database.
+
+```bash
+    composer install
+    composer test
+```
+
+Code style is checked with [Laravel Pint](https://laravel.com/docs/pint):
+
+```bash
+    composer lint
+```
+
+GitHub Actions runs the suite on PHP 8.2, 8.3, 8.4, and 8.5 against Laravel 12 and 13, plus a Pint style check, on every push and pull request. Laravel 11 and below are still supported by the composer constraints, but they cannot be installed on a clean runner anymore because composer blocks the framework releases that carry published security advisories.
+
 ### Screenshots
 ![Verification Page](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/1-verification-page.jpeg)
 ![Resent Email Modal](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/2-verification-email-resent.jpeg)
@@ -150,66 +169,87 @@ Route::group(['middleware' => ['twostep']], function () {
 
 ```
 └── laravel2step
+    ├── .gitattributes
+    ├── .github
+    │   ├── FUNDING.yml
+    │   └── workflows
+    │       └── tests.yml
     ├── .gitignore
-    ├── LICENSE
-    ├── README.md
     ├── composer.json
-    └── src
-        ├── .env.example
-        ├── Laravel2stepServiceProvider.php
-        ├── app
-        │   ├── Http
-        │   │   ├── Controllers
-        │   │   │   └── TwoStepController.php
-        │   │   └── Middleware
-        │   │       └── Laravel2step.php
-        │   ├── Models
-        │   │   └── TwoStepAuth.php
-        │   ├── Notifications
-        │   │   └── SendVerificationCodeEmail.php
-        │   └── Traits
-        │       └── Laravel2StepTrait.php
-        ├── config
-        │   └── laravel2step.php
-        ├── database
-        │   └── migrations
-        │       └── 2017_12_09_070937_create_two_step_auth_table.php
-        ├── public
-        │   └── css
-        │       ├── app.css
-        │       └── app.min.css
-        ├── resources
-        │   ├── assets
-        │   │   └── scss
-        │   │       ├── _animations.scss
-        │   │       ├── _mixins.scss
-        │   │       ├── _modals.scss
-        │   │       ├── _variables.scss
-        │   │       ├── _verification.scss
-        │   │       └── app.scss
-        │   ├── lang
-        │   │   └── en
-        │   │       └── laravel-verification.php
-        │   └── views
-        │       ├── layouts
-        │       │   └── app.blade.php
-        │       ├── partials
-        │       ├── scripts
-        │       │   └── input-parsing-auto-stepper.blade.php
-        │       └── twostep
-        │           ├── exceeded.blade.php
-        │           └── verification.blade.php
-        └── routes
-            └── web.php
-
+    ├── LICENSE
+    ├── phpunit.xml
+    ├── pint.json
+    ├── README.md
+    ├── src
+    │   ├── .env.example
+    │   ├── App
+    │   │   ├── Http
+    │   │   │   ├── Controllers
+    │   │   │   │   └── TwoStepController.php
+    │   │   │   └── Middleware
+    │   │   │       └── Laravel2step.php
+    │   │   ├── Models
+    │   │   │   └── TwoStepAuth.php
+    │   │   ├── Notifications
+    │   │   │   └── SendVerificationCodeEmail.php
+    │   │   └── Traits
+    │   │       └── Laravel2StepTrait.php
+    │   ├── config
+    │   │   └── laravel2step.php
+    │   ├── database
+    │   │   └── migrations
+    │   │       └── 2017_12_09_070937_create_two_step_auth_table.php
+    │   ├── Laravel2stepFacade.php
+    │   ├── Laravel2stepServiceProvider.php
+    │   ├── public
+    │   │   └── css
+    │   │       ├── app.css
+    │   │       └── app.min.css
+    │   ├── resources
+    │   │   ├── assets
+    │   │   │   └── scss
+    │   │   │       ├── _animations.scss
+    │   │   │       ├── _mixins.scss
+    │   │   │       ├── _modals.scss
+    │   │   │       ├── _variables.scss
+    │   │   │       ├── _verification.scss
+    │   │   │       └── app.scss
+    │   │   ├── lang
+    │   │   │   └── en
+    │   │   │       └── laravel-verification.php
+    │   │   └── views
+    │   │       ├── layouts
+    │   │       │   └── app.blade.php
+    │   │       ├── scripts
+    │   │       │   └── input-parsing-auto-stepper.blade.php
+    │   │       └── twostep
+    │   │           ├── exceeded.blade.php
+    │   │           └── verification.blade.php
+    │   └── routes
+    │       └── web.php
+    └── tests
+        ├── Feature
+        │   ├── MiddlewareTest.php
+        │   ├── SendVerificationCodeEmailTest.php
+        │   └── TwoStepControllerTest.php
+        ├── Models
+        │   └── User.php
+        ├── Pest.php
+        ├── Support
+        │   ├── RouteSpy.php
+        │   └── TwoStepTester.php
+        ├── TestCase.php
+        └── Unit
+            ├── ConfigTest.php
+            ├── Laravel2StepTraitTest.php
+            ├── ServiceProviderTest.php
+            └── TwoStepAuthModelTest.php
 ```
 
 * Tree command can be installed using brew: `brew install tree`
-* File tree generated using command `tree -a -I '.git|node_modules|vendor|storage|tests`
+* File tree generated using command `tree -a -I '.git|node_modules|vendor|storage|composer.lock'`
 
 ### Future
-* Unit Tests
-* Travis-CI Integration.
 * Its own HTML email template.
 * Add in additional notifications for SMS or ???.
 * Add in capture IP Address.

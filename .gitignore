@@ -35,6 +35,10 @@ Homestead.json
 .env
 composer.lock
 
+### Testing ###
+.phpunit.cache
+.phpunit.result.cache
+
 ### Assets ###
 /node_modules
 /public/hot

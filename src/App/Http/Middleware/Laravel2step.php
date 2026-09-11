@@ -14,13 +14,12 @@ class Laravel2step
      * Handle an incoming request.
      *
      * @param Request  $request
-     * @param \Closure $response
+     * @param Closure $next
      *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        $response = $next($request);
         $uri = $request->path();
         $nextUri = config('app.url').'/'.$uri;
 
@@ -44,6 +43,6 @@ class Laravel2step
                 break;
         }
 
-        return $response;
+        return $next($request);
     }
 }
