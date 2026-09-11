@@ -158,7 +158,16 @@ Code style is checked with [Laravel Pint](https://laravel.com/docs/pint):
     composer lint
 ```
 
-GitHub Actions runs the suite on PHP 8.2, 8.3, 8.4, and 8.5 against Laravel 12 and 13, plus a Pint style check, on every push and pull request. Laravel 11 and below are still supported by the composer constraints, but they cannot be installed on a clean runner anymore because composer blocks the framework releases that carry published security advisories.
+GitHub Actions runs on every push and pull request, and again every Monday so a new Laravel release cannot break the package quietly:
+
+| Job | What it covers |
+| :--- | :--- |
+| Tests | PHP 8.2, 8.3, 8.4, and 8.5 against Laravel 12 and 13 |
+| Lowest dependencies | The oldest versions the composer constraints allow |
+| Code style | `composer validate --strict` and `pint --test` |
+| Security audit | `composer audit` against known advisories |
+
+Laravel 11 and below are still supported by the composer constraints, but they cannot be installed on a clean runner anymore, because composer blocks the framework releases that carry published security advisories.
 
 ### Screenshots
 ![Verification Page](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/1-verification-page.jpeg)
@@ -173,10 +182,12 @@ GitHub Actions runs the suite on PHP 8.2, 8.3, 8.4, and 8.5 against Laravel 12 a
 └── laravel2step
     ├── .gitattributes
     ├── .github
+    │   ├── dependabot.yml
     │   ├── FUNDING.yml
     │   └── workflows
     │       └── tests.yml
     ├── .gitignore
+    ├── .scrutinizer.yml
     ├── composer.json
     ├── LICENSE
     ├── phpunit.xml
