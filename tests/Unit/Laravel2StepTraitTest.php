@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Notification;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
 use jeremykenedy\laravel2step\App\Notifications\SendVerificationCodeEmail;
 use jeremykenedy\laravel2step\Test\Support\TwoStepTester;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 beforeEach(function (): void {
     $this->tester = new TwoStepTester();

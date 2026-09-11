@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace jeremykenedy\laravel2step\Test;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
-use jeremykenedy\laravel2step\Laravel2stepServiceProvider;
 use jeremykenedy\laravel2step\App\Models\TwoStepAuth;
+use jeremykenedy\laravel2step\Laravel2stepServiceProvider;
 use jeremykenedy\laravel2step\Test\Models\User;
 use jeremykenedy\laravel2step\Test\Support\TwoStepTester;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use RuntimeException;
-use Illuminate\Foundation\Application;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -40,6 +40,7 @@ abstract class TestCase extends OrchestraTestCase
      * Load the package service provider.
      *
      * @param Application $app
+     *
      * @return array<int, class-string>
      */
     protected function getPackageProviders($app): array
