@@ -1,4 +1,10 @@
-![Laravel 2 Step Verification](https://github-project-images.s3-us-west-2.amazonaws.com/logos/laravel2step-logo.png)
+<p align="center">
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="art/banner-dark.svg">
+        <source media="(prefers-color-scheme: light)" srcset="art/banner-light.svg">
+        <img alt="Laravel 2-Step Verification" src="art/banner-light.svg" width="100%">
+    </picture>
+</p>
 
 # Laravel 2 Step Verification
 Laravel 2-Step Verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects.
@@ -198,6 +204,9 @@ Laravel 11 and below are still supported by the composer constraints, but they c
     │       └── tests.yml
     ├── .gitignore
     ├── .scrutinizer.yml
+    ├── art
+    │   ├── banner-dark.svg
+    │   └── banner-light.svg
     ├── composer.json
     ├── LICENSE
     ├── phpunit.xml

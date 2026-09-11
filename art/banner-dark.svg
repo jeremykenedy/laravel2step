@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200" role="img" aria-labelledby="t d">
+  <title id="t">Laravel 2-Step Verification</title>
+  <desc id="d">A Laravel package that emails a four digit code and verifies it before the user continues.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff4433" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#ff4433" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M16 0H0V16" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <clipPath id="card">
+      <rect x="0.75" y="0.75" width="798.5" height="198.5" rx="14"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect width="800" height="200" fill="url(#bg)"/>
+    <rect x="470" width="330" height="200" fill="url(#grid)"/>
+    <ellipse cx="650" cy="95" rx="190" ry="120" fill="url(#glow)"/>
+    <rect width="5" height="200" fill="#ff4433"/>
+  </g>
+  <rect x="0.75" y="0.75" width="798.5" height="198.5" rx="14" fill="none" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- wordmark -->
+  <text x="36" y="49" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.6"
+        fill="#d2a8ff">JEREMYKENEDY / LARAVEL2STEP</text>
+  <text x="36" y="89" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="-0.6"
+        fill="#e6edf3">Laravel 2-Step Verification</text>
+  <text x="36" y="115" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" fill="#9198a1">Email a one time code, and verify it before the user goes anywhere.</text>
+
+    <g>
+      <rect x="36.0" y="150" width="135.6" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+      <circle cx="49.0" cy="163" r="3" fill="#ff4433"/>
+      <text x="58.0" y="167" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#c9d1d9">4-digit email codes</text>
+    </g>
+    <g>
+      <rect x="180.6" y="150" width="129.3" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+      <circle cx="193.6" cy="163" r="3" fill="#ff4433"/>
+      <text x="202.6" y="167" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#c9d1d9">Lockout protection</text>
+    </g>
+    <g>
+      <rect x="318.9" y="150" width="129.3" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+      <circle cx="331.9" cy="163" r="3" fill="#ff4433"/>
+      <text x="340.9" y="167" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#c9d1d9">Fully configurable</text>
+    </g>
+
+  <!-- illustration: the code arrives by email, then gets typed in -->
+  <g opacity="0.9">
+    <rect x="534" y="18" width="40" height="28" rx="6" fill="none" stroke="#9198a1" stroke-width="1.5"/>
+    <path d="M534.5 24.5 554 38 573.5 24.5" fill="none" stroke="#9198a1" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M581 34c22 1 30 8 32 20" fill="none" stroke="#9198a1" stroke-width="1.5"
+          stroke-linecap="round" stroke-dasharray="3 4.5"/>
+    <path d="M609 54.5l4 7.5 4.4-7.2z" fill="#9198a1"/>
+  </g>
+
+    <rect x="534" y="66" width="46" height="58" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="557" y="104" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="24" font-weight="600" text-anchor="middle" fill="#e6edf3">7</text>
+    <rect x="592" y="66" width="46" height="58" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="615" y="104" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="24" font-weight="600" text-anchor="middle" fill="#e6edf3">K</text>
+    <rect x="650" y="66" width="46" height="58" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="673" y="104" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="24" font-weight="600" text-anchor="middle" fill="#e6edf3">4</text>
+    <rect x="708" y="66" width="46" height="58" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="731" y="104" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="24" font-weight="600" text-anchor="middle" fill="#e6edf3">2</text>
+
+  <g>
+    <circle cx="752" cy="70" r="13" fill="#0d1117"/>
+    <circle cx="752" cy="70" r="11" fill="#3fb950"/>
+    <path d="M747 70.5l3.6 3.6 6.4-7.2" fill="none" stroke="#0d1117" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
