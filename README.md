@@ -143,7 +143,9 @@ Route::group(['middleware' => ['twostep']], function () {
 });
 ```
 
-The verification routes authenticate with your application's **default** guard, so the package is built for default guard authentication such as Laravel's session based `web` guard. If you protect routes with a different guard, for example `auth:sanctum`, the middleware will still block an unverified user, but that user cannot reach the verification page: `/verification/needed` authenticates on the default guard and will send them to your login route instead.
+Two step verification is supported on your application's **default** guard, which is Laravel's session based `web` guard unless you changed it. The `twostep` middleware needs a session, since it stores where the user was headed, so it belongs on routes in the `web` group.
+
+If you protect `web` group routes with another guard, for example `['auth:sanctum', 'twostep']`, an unverified user is still blocked, because Laravel's middleware priority runs `auth` ahead of this package's middleware. That user cannot complete verification though: `/verification/needed` authenticates on the default guard, so they are sent to your login route instead of the verification form.
 
 ### Routes
 * ```/verification/needed```
@@ -157,6 +159,8 @@ The package ships with a [Pest](https://pestphp.com) suite that runs against an 
     composer install
     composer test
 ```
+
+Running the suite needs PHP 8.2 or higher, because Pest and Pint do not run on anything older. That is a requirement for working on the package, not for using it: the package itself still installs on PHP 7.3 and up.
 
 Code style is checked with [Laravel Pint](https://laravel.com/docs/pint):
 
