@@ -137,7 +137,7 @@ Route::group(['middleware' => ['twostep']], function () {
 });
 ```
 
-If your routes authenticate on a guard other than the default one, list `twostep` after your authentication middleware, for example `['auth:sanctum', 'twostep']`. The verification check reads the authenticated user, so it needs authentication to have happened first.
+The verification routes authenticate with your application's **default** guard, so the package is built for default guard authentication such as Laravel's session based `web` guard. If you protect routes with a different guard, for example `auth:sanctum`, the middleware will still block an unverified user, but that user cannot reach the verification page: `/verification/needed` authenticates on the default guard and will send them to your login route instead.
 
 ### Routes
 * ```/verification/needed```
@@ -158,12 +158,12 @@ Code style is checked with [Laravel Pint](https://laravel.com/docs/pint):
     composer lint
 ```
 
-GitHub Actions runs on every push and pull request, and again every Monday so a new Laravel release cannot break the package quietly:
+GitHub Actions runs on every pull request, on pushes to `master`, and again every Monday so a new Laravel release cannot break the package quietly:
 
 | Job | What it covers |
 | :--- | :--- |
 | Tests | PHP 8.2, 8.3, 8.4, and 8.5 against Laravel 12 and 13 |
-| Lowest dependencies | The oldest versions the composer constraints allow |
+| Lowest dependencies | The oldest dependency versions that resolve against Laravel 12 |
 | Code style | `composer validate --strict` and `pint --test` |
 | Security audit | `composer audit` against known advisories |
 
