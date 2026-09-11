@@ -2,9 +2,10 @@
 
 namespace jeremykenedy\laravel2step\App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use jeremykenedy\laravel2step\App\Traits\Laravel2StepTrait;
@@ -44,7 +45,7 @@ class TwoStepController extends Controller
      */
     private function setUser2StepData()
     {
-        $user = Auth::User();
+        $user = Auth::user();
         $twoStepAuth = $this->getTwoStepAuthStatus($user->id);
         $authCount = $twoStepAuth->authCount;
         $this->_user = $user;
@@ -82,7 +83,7 @@ class TwoStepController extends Controller
     /**
      * Show the twostep verification form.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function showVerification()
     {
@@ -91,7 +92,6 @@ class TwoStepController extends Controller
         }
 
         $twoStepAuth = $this->_twoStepAuth;
-        $authStatus = $this->_authStatus;
 
         if ($this->checkExceededTime($twoStepAuth->updated_at)) {
             $this->resetExceededTime($twoStepAuth);
@@ -108,7 +108,7 @@ class TwoStepController extends Controller
             $data['timeUntilUnlock'] = $exceededTimeDetails['tomorrow'];
             $data['timeCountdownUnlock'] = $exceededTimeDetails['remaining'];
 
-            return View('laravel2step::twostep.exceeded')->with($data);
+            return view('laravel2step::twostep.exceeded')->with($data);
         }
 
         $now = new Carbon();
@@ -123,7 +123,7 @@ class TwoStepController extends Controller
             $this->sendVerificationCodeNotification($twoStepAuth);
         } else {
             $timeBuffer = (int) config('laravel2step.laravel2stepTimeResetBufferSeconds');
-            $timeAllowedToSendCode = $sentTimestamp->addSeconds($timeBuffer);
+            $timeAllowedToSendCode = Carbon::parse($sentTimestamp)->addSeconds($timeBuffer);
             if ($now->gt($timeAllowedToSendCode)) {
                 $this->sendVerificationCodeNotification($twoStepAuth);
                 $twoStepAuth->requestDate = new Carbon();
@@ -131,7 +131,7 @@ class TwoStepController extends Controller
             }
         }
 
-        return View('laravel2step::twostep.verification')->with($data);
+        return view('laravel2step::twostep.verification')->with($data);
     }
 
     /**
@@ -139,7 +139,7 @@ class TwoStepController extends Controller
      *
      * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function verify(Request $request)
     {
@@ -189,7 +189,7 @@ class TwoStepController extends Controller
     /**
      * Resend the validation code triggered by user.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function resend()
     {

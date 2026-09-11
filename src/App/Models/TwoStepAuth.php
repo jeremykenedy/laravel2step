@@ -3,6 +3,7 @@
 namespace jeremykenedy\laravel2step\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TwoStepAuth extends Model
 {
@@ -80,7 +81,7 @@ class TwoStepAuth extends Model
     }
 
     /**
-     * Get the database connection.
+     * Get the database table.
      */
     public function getTableName()
     {
@@ -88,13 +89,13 @@ class TwoStepAuth extends Model
     }
 
     /**
-     * An activity has a user.
+     * A two step auth entry belongs to a user.
      *
-     * @var array
+     * @return BelongsTo
      */
     public function user()
     {
-        return $this->hasOne(config('laravel2step.defaultUserModel'));
+        return $this->belongsTo(config('laravel2step.defaultUserModel'), 'userId');
     }
 
     /**

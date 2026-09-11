@@ -52,13 +52,19 @@ class SendVerificationCodeEmail extends Notification implements ShouldQueue
      *
      * @param mixed $notifiable
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
         $message = new MailMessage();
+
+        $fromAddress = config('laravel2step.verificationEmailFrom');
+
+        if ($fromAddress) {
+            $message->from($fromAddress, config('laravel2step.verificationEmailFromName'));
+        }
+
         $message
-            ->from(config('laravel2step.verificationEmailFrom'), config('laravel2step.verificationEmailFromName'))
             ->subject(trans('laravel2step::laravel-verification.verificationEmailSubject'))
             ->greeting(trans('laravel2step::laravel-verification.verificationEmailGreeting', ['username' => $this->user->name]))
             ->line(trans('laravel2step::laravel-verification.verificationEmailMessage'))

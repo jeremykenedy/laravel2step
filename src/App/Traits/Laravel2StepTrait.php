@@ -19,7 +19,7 @@ trait Laravel2StepTrait
      */
     public function twoStepVerification($request)
     {
-        $user = Auth::User();
+        $user = Auth::user();
 
         if ($user) {
             $twoStepAuthStatus = $this->checkTwoStepAuthStatus($user->id);
@@ -39,7 +39,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Check time since user was last verified and take apprpriate action.
+     * Check time since user was last verified and take appropriate action.
      *
      * @param collection $twoStepAuth
      *
@@ -100,7 +100,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Create/retreive 2step verification object.
+     * Create/retrieve 2step verification object.
      *
      * @param int $userId
      *
@@ -123,7 +123,7 @@ trait Laravel2StepTrait
     }
 
     /**
-     * Retreive the Verification Status.
+     * Retrieve the Verification Status.
      *
      * @param int $userId
      *
@@ -222,7 +222,7 @@ trait Laravel2StepTrait
      */
     protected function sendVerificationCodeNotification($twoStepAuth, $deliveryMethod = null)
     {
-        $user = Auth::User();
+        $user = Auth::user();
         if ($deliveryMethod === null) {
             $user->notify(new SendVerificationCodeEmail($user, $twoStepAuth->authCode));
         }

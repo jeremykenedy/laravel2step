@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use jeremykenedy\laravel2step\App\Http\Controllers\TwoStepController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(
-    ['prefix' => 'verification', 'as' => 'laravel2step::', 'namespace' => 'jeremykenedy\laravel2step\App\Http\Controllers', 'middleware' => ['web']],
+    ['prefix' => 'verification', 'as' => 'laravel2step::', 'middleware' => ['web']],
     function () {
-        Route::get('/needed', ['uses' => 'TwoStepController@showVerification'])->name('verificationNeeded');
-        Route::post('/verify', ['uses' => 'TwoStepController@verify'])->name('verify');
-        Route::post('/resend', ['uses' => 'TwoStepController@resend'])->name('resend');
+        Route::get('/needed', [TwoStepController::class, 'showVerification'])->name('verificationNeeded');
+        Route::post('/verify', [TwoStepController::class, 'verify'])->name('verify');
+        Route::post('/resend', [TwoStepController::class, 'resend'])->name('resend');
     }
 );

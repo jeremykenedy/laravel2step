@@ -140,7 +140,7 @@ switch ($remainingAttempts) {
         $hoursToExpire = $minutesToExpire / 60;
     @endphp
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     @include('laravel2step::scripts.input-parsing-auto-stepper');
 

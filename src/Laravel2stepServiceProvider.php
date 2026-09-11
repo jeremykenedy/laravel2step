@@ -9,21 +9,24 @@ use jeremykenedy\laravel2step\App\Http\Middleware\Laravel2step;
 class Laravel2stepServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Bootstrap the application services.
+     *
+     * @param Router $router
      *
      * @return void
      */
     public function boot(Router $router)
     {
         $router->middlewareGroup('twostep', [Laravel2step::class]);
+
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/resources/views/', 'laravel2step');
         $this->loadTranslationsFrom(__DIR__.'/resources/lang/', 'laravel2step');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishFiles();
+        }
     }
 
     /**
@@ -33,11 +36,7 @@ class Laravel2stepServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/resources/views/', 'laravel2step');
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->mergeConfigFrom(__DIR__.'/config/laravel2step.php', 'laravel2step');
-        $this->publishFiles();
     }
 
     /**

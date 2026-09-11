@@ -16,7 +16,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'laravel2stepDatabaseConnection'  => env('LARAVEL_2STEP_DATABASE_CONNECTION', 'mysql'),
+    'laravel2stepDatabaseConnection'  => env('LARAVEL_2STEP_DATABASE_CONNECTION', config('database.default')),
     'laravel2stepDatabaseTable'       => env('LARAVEL_2STEP_DATABASE_TABLE', 'laravel2step'),
 
     /*
@@ -56,7 +56,7 @@ return [
     'laravel2stepAppCssEnabled'         => env('LARAVEL_2STEP_APP_CSS_ENABLED', false),
     'laravel2stepAppCss'                => env('LARAVEL_2STEP_APP_CSS', 'css/app.css'),
     'laravel2stepBootstrapCssCdnEnbled' => env('LARAVEL_2STEP_BOOTSTRAP_CSS_CDN_ENABLED', true),
-    'laravel2stepBootstrapCssCdn'       => env('LARAVEL_2STEP_BOOTSTRAP_CSS_CDN', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'),
+    'laravel2stepBootstrapCssCdn'       => env('LARAVEL_2STEP_BOOTSTRAP_CSS_CDN', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css'),
     'laravel2stepCssFile'               => env('LARAVEL_2STEP_CSS_FILE', 'css/laravel2step/app.css'),
 
     /*
