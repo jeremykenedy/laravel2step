@@ -7,11 +7,3 @@ updates:
       interval: weekly
     commit-message:
       prefix: ci
-
-  - package-ecosystem: composer
-    directory: /
-    schedule:
-      interval: weekly
-    versioning-strategy: widen
-    commit-message:
-      prefix: composer
