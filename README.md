@@ -9,6 +9,12 @@
 # Laravel 2 Step Verification
 Laravel 2-Step Verification is a package to add 2-Step user authentication to any Laravel project easily. It is configurable and customizable. It uses notifications to send the user an email with a 4-digit verification code. Can be used in out the box with Laravel's authentication scaffolding or integrated into other projects.
 
+<p align="center">
+    <a href="https://github.com/jeremykenedy"><img src="https://img.shields.io/github/followers/jeremykenedy?label=Follow&amp;style=social" alt="Follow @jeremykenedy"></a>
+    <a href="https://github.com/jeremykenedy/laravel2step/stargazers"><img src="https://img.shields.io/github/stars/jeremykenedy/laravel2step?style=social" alt="Star laravel2step on GitHub"></a>
+    <a href="https://github.com/sponsors/jeremykenedy"><img src="https://img.shields.io/static/v1?label=Sponsor&amp;message=%E2%9D%A4&amp;logo=GitHub&amp;color=%23fe8e86" alt="Sponsor me on GitHub"></a>
+</p>
+
 [![Tests](https://github.com/jeremykenedy/laravel2step/actions/workflows/tests.yml/badge.svg)](https://github.com/jeremykenedy/laravel2step/actions/workflows/tests.yml)
 [![Latest Stable Version](https://poser.pugx.org/jeremykenedy/laravel2step/v/stable)](https://packagist.org/packages/jeremykenedy/laravel2step)
 [![Total Downloads](https://poser.pugx.org/jeremykenedy/laravel2step/downloads)](https://packagist.org/packages/jeremykenedy/laravel2step)
